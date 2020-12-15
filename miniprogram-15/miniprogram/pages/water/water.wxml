@@ -1,0 +1,27 @@
+<view class="title">今日应喝水量{{TotalWater}}</view>
+<form bindsubmit="formSubmit">
+<view>早上:{{NMWater}}（推荐喝水量：{{MWater}}）</view>
+<switch bindchange="xChange1">记录喝水量</switch>
+<block wx:if="{{x1}}">
+    <input placeholder="输入喝水量" name="drink1"></input>
+    <button type="primary" formType="submit">确定</button>
+</block>
+<progress percent="{{MPER}}" color="#10AEFF" active stroke-width="5" show-info="true"></progress>
+<view>下午:{{NAWater}}（推荐喝水量：{{AWater}}）</view>
+<switch bindchange="xChange2">记录喝水量</switch>
+<block wx:if="{{x2}}">
+    <input placeholder="输入喝水量" name="drink2"></input>
+    <button type="primary" formType="submit">确定</button>
+</block>
+<progress percent="{{APER}}" color="#10AEFF" active stroke-width="5" show-info="true"></progress>
+<view>晚上:{{NEWater}}（推荐喝水量：{{EWater}}）
+</view>
+<switch bindchange="xChange3">记录喝水量</switch>
+<block wx:if="{{x}}">
+    <input placeholder="输入喝水量" name="drink3"></input>
+    <button type="primary" formType="submit">确定</button>
+</block>
+</form>
+<progress percent="{{EPER}}" color="#10AEFF" active stroke-width="5" show-info="true"></progress>
+<image class='background' src="../../images/main.jpg" mode="aspectFill"></image>
+<button type="default" bindtap="reset">重新记录</button>

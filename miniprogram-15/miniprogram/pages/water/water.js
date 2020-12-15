@@ -1,0 +1,149 @@
+const app=getApp()
+const db = wx.cloud.database().collection("UserData")
+const tizhong = 'res.result.data[0].weight'
+const zhiye = 'res.result.data[0].wokertype'
+Page({
+  data:{
+  TotalWater:0,
+  MWater:0,
+  AWater:0,
+  EWater:0,
+  NMWater:0,
+  NAWater:0,
+  NEWater:0,
+  TPER:0,
+  MPER:0,
+  APER:0,
+  EPER:0,
+  drink1:0,
+  drink2:0,
+  drink3:0,
+  x:false,
+  x1:false,
+  x2:false,
+  },
+onLoad:function(){
+  var _this = this
+  wx.cloud.callFunction({
+    name:'search',
+    data:{
+      tag:1
+    },
+    success:function(res){
+      console.log(res.result.data[0].weight)
+      console.log(res.result.data[0].worktype)
+      _this.setData({
+        NMWater:res.result.data[1].NMWater,
+        NAWater:res.result.data[1].NAWater,
+        NEWater:res.result.data[1].NEWater,
+      })
+      if(res.result.data[0].worktype==="脑力劳动者"){
+        _this.setData({
+          TotalWater:res.result.data[0].weight*32.6,
+          MWater:res.result.data[0].weight*32.6/4,
+          AWater:res.result.data[0].weight*32.6/2,
+          EWater:res.result.data[0].weight*32.6/4,
+          MPER:((res.result.data[1].NMWater)/(res.result.data[0].weight*32.6/4)*100).toFixed(1),
+          APER:((res.result.data[1].NAWater)/(res.result.data[0].weight*32.6/2)*100).toFixed(1),
+          EPER:((res.result.data[1].NEWater)/(res.result.data[0].weight*32.6/4)*100).toFixed(1),
+          
+        })
+      }else{
+        _this.setData({
+          TotalWater:res.result.data[0].weight*43.4,
+          MWater:res.result.data[0].weight*43.4/4,
+          AWater:res.result.data[0].weight*43.4/2,
+          EWater:res.result.data[0].weight*43.4/4,
+          MPER:((res.result.data[1].NMWater)/(res.result.data[0].weight*43.4/4)*100).toFixed(1),
+          APER:((res.result.data[1].NAWater)/(res.result.data[0].weight*43.4/2)*100).toFixed(1),
+          EPER:((res.result.data[1].NEWater)/(res.result.data[0].weight*43.4/4)*100).toFixed(1),
+          
+        })
+      }
+    },
+    fail:console.error
+  })
+},
+xChange1:function(e)
+{
+  this.setData({
+    x1:e.detail.value
+  })
+},
+xChange2:function(e)
+{
+  this.setData({
+    x2:e.detail.value
+  })
+},
+xChange3:function(e)
+{
+  this.setData({
+    x:e.detail.value
+  })
+},
+formSubmit(e){
+  var NM = this.data.NMWater
+  var NA = this.data.NAWater
+  var NE = this.data.NEWater
+  var that = this
+  console.log(e)
+  wx.cloud.callFunction({
+    name:'search',
+    data:{
+    },
+    success:function(res){
+      console.log(res)
+      that.setData({
+        NMWater:res.result.data[1].NMWater+Number(e.detail.value.drink1),
+        NAWater:res.result.data[1].NAWater+Number(e.detail.value.drink2),
+        NEWater:res.result.data[1].NEWater+Number(e.detail.value.drink3),
+      })
+      if(res.result.data[0].worktype==="脑力劳动者"){
+        that.setData({
+          MPER:((res.result.data[1].NMWater+Number(e.detail.value.drink1))/(res.result.data[0].weight*32.6/4)*100).toFixed(1),
+          APER:((res.result.data[1].NAWater+Number(e.detail.value.drink2))/(res.result.data[0].weight*32.6/2)*100).toFixed(1),
+          EPER:((res.result.data[1].NEWater+Number(e.detail.value.drink3))/(res.result.data[0].weight*32.6/4)*100).toFixed(1),
+          TPER:(Number(e.detail.value.drink1)+Number(e.detail.value.drink2)+Number(e.detail.value.drink3)/(res.result.data[0].weight*32.6)*100).toFixed(1),
+        })
+      }else{
+        that.setData({
+          MPER:((res.result.data[1].NMWater+Number(e.detail.value.drink1))/(res.result.data[0].weight*43.4/4)*100).toFixed(1),
+          APER:((res.result.data[1].NAWater+Number(e.detail.value.drink2))/(res.result.data[0].weight*43.4/2)*100).toFixed(1),
+          EPER:((res.result.data[1].NEWater+Number(e.detail.value.drink3))/(res.result.data[0].weight*43.4/4)*100).toFixed(1),
+          TPER:((Number(e.detail.value.drink1))+(Number(e.detail.value.drink2))+(Number(e.detail.value.drink3))/(res.result.data[0].weight*43.4)*100).toFixed(1),
+        })
+      }
+      db.doc('water').update({
+        data:{
+          NMWater:Number(e.detail.value.drink1)+that.data.NMWater,
+          NAWater:Number(e.detail.value.drink2)+that.data.NAWater,
+          NEWater:Number(e.detail.value.drink3)+that.data.NEWater,
+        }
+      })
+    }
+  })
+},
+reset:function(e){
+  this.setData({
+      NMWater:0,
+      NAWater:0,
+      NEWater:0,
+      MPER:0,
+      APER:0,
+      EPER:0,
+      TPER:0,
+  })
+  db.doc('water').update({
+    data:{
+      NMWater:0,
+      NAWater:0,
+      NEWater:0,
+      MPER:0,
+      APER:0,
+      EPER:0,
+      TPER:0,
+    }
+  })
+}
+})

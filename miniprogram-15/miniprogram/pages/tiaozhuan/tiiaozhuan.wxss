@@ -1,0 +1,26 @@
+page{
+  background-color: whitesmoke;
+}
+.btn1 {
+  width: 80%;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  background-color: deepskyblue;
+  color: white;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnImg {
+  margin-right: 8rpx;
+  width: 46rpx;
+  height: 46rpx;
+}
+
+.btn1::after {
+  border-radius: 98rpx;
+  border: 0; 
+}

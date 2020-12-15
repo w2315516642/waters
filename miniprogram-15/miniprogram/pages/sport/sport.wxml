@@ -1,0 +1,12 @@
+<swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">  
+      <block wx:for="{{movies}}" wx:for-index="index">  
+        <swiper-item>  
+          <image src="{{item.url}}" class="slide-image" mode="heightFix"/>  
+        </swiper-item>  
+      </block>  
+     </swiper> 
+<view class="title">《《关于咕咚》》</view>
+     <text decode="{{true}}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 我们一直所追求大方面的健康，却忽略了生活中最基本的习惯。喝水，最重要也最经常被遗忘的生活环节。在我们拼命限制自己的食量以达到健康水准时，请问问自己，我喝的水满足我自身的需求了吗？我是在喝水的最佳时间喝水的吗？我是不是又忘记喝水了？
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基于从最微小的环节呵护人们的健康，我们尝试着开发了咕咚，通过私人定制，来满足不同人群对水的不同需求，更加的人性，也为生活增添了保障。
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;咕咚，从小做起，从现在做起。</text>
+<image src="../../images/timg.gif"></image>

@@ -1,0 +1,6 @@
+<image src="../../images/water.jpg"></image>
+<button class='btn1' bindtap="in">
+    <image class='btnImg' src='../../images/wechat.png'></image>
+    <view>进入咕咚！</view>
+ </button>
+ <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608051079465&di=873ae976584717f8b1661abaf867f088&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F94%2F41%2F80%2F591e5916827a2.png"></image>

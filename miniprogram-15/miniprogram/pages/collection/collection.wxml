@@ -1,0 +1,9 @@
+<open-data type="userAvatarUrl" class="img"></open-data>
+<open-data type="userNickName" class="name"></open-data>
+
+<text class="view">年龄：{{age}}</text>
+<test class="view">身高：{{height}}</test>
+<test class="view">体重：{{weight}} kg</test>
+<test class="view">职业类别：{{worktype}}</test>
+
+<navigator url="../xiugai/xiugai" class="button">修改信息</navigator>

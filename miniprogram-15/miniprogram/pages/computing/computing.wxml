@@ -1,0 +1,12 @@
+<view class="picker">{{currenTime}}</view>
+<form bindsubmit="formSubmit">
+  <view class="picker">设置时间</view>
+  <button bindtap='onTapAdd'>添加闹钟</button>
+  <button bindtap='onTapDel'>删除闹钟</button>
+  <picker mode="time" value ="{{time}}" bindchange = "bindTimeChange" class="picker">{{time}}</picker>
+</form>
+<view>
+  <block wx:for="{{times}}" wx:key="index">
+    <picker mode="time" value ="{{times[index].times}}" bindchange = "TimeChange" class="picker" data-idx='{{index}}'>{{times[index].times}}</picker>
+  </block>
+</view>

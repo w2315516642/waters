@@ -1,0 +1,16 @@
+page{
+  background-color: papayawhip;
+}
+.swiper {
+  height: 500rpx;
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
+.title{
+  font-size: 40rpx;
+  display: flex;
+  justify-content: center;
+}

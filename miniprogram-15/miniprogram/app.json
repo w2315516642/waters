@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/tiaozhuan/tiiaozhuan",
+    "pages/water/water",
+    "pages/mine/mine",
+    "pages/sport/sport",
+    "pages/computing/computing",
+    "pages/util/util",
+    "pages/openapi/openapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/msgget/msgget",
+    "pages/xiugai/xiugai"
+  ],
+  "tabBar": {
+    "color": "#00CCFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "text": "水量",
+        "iconPath": "images/timg.png",
+        "selectedIconPath": "images/seetimg.png",
+        "pagePath": "pages/water/water"
+      },
+      {
+        "text": "关于",
+        "iconPath": "images/gou1.png",
+        "selectedIconPath": "images/gou2.png",
+        "pagePath": "pages/sport/sport"
+      },
+      {
+        "text": "我的",
+        "iconPath": "images/ti.png",
+        "selectedIconPath": "images/seti.png",
+        "pagePath": "pages/mine/mine"
+      }
+    ]
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "咕咚--你的健康管家",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
